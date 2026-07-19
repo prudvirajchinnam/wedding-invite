@@ -1,0 +1,15 @@
+<svg viewBox="0 0 480 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e4ecdf"/>
+      <stop offset="100%" stop-color="#bcd0b3"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="600" fill="url(#bg)"/>
+  <rect x="16" y="16" width="448" height="568" fill="none" stroke="#46693b" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.5"/>
+  <circle cx="240" cy="255" r="90" fill="#7a9a6b" opacity="0.35"/>
+  <path d="M240 155 C280 155 310 190 310 235 C310 275 285 300 240 300 C195 300 170 275 170 235 C170 190 200 155 240 155 Z" fill="#46693b" opacity="0.55"/>
+  <path d="M150 430 C150 350 190 305 240 305 C290 305 330 350 330 430 L330 460 L150 460 Z" fill="#46693b" opacity="0.55"/>
+  <text x="240" y="510" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="22" fill="#45282a">Groom's photo</text>
+  <text x="240" y="538" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" letter-spacing="2" fill="#45282a" opacity="0.7">REPLACE IN /PUBLIC/IMAGES</text>
+</svg>

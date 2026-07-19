@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+:root {
+  /* -------------------------------------------------------------------- */
+  /* Design tokens — traditional ivory, gold & maroon wedding palette      */
+  /* (same token names as before, so every component reskins automatically)*/
+  /* -------------------------------------------------------------------- */
+  --color-cream: #fbf3e4;
+  --color-blush: #f6e8c9;
+  --color-blush-deep: #eccd8f;
+  --color-sage: #7a9a6b;
+  --color-sage-deep: #46693b;
+  --color-rose: #c17a89;
+  --color-rose-deep: #832f45;
+  --color-gold: #c9a227;
+  --color-gold-deep: #93711a;
+  --color-plum: #45282a;
+  --color-plum-soft: #7a5952;
+
+  /* Fonts loaded via <link> in app/layout.tsx head. To swap a typeface,
+     change both the <link> href there and the family name below. */
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-script: "Petit Formal Script", cursive;
+  --font-body: "Jost", "Helvetica Neue", Arial, sans-serif;
+}
+
+@theme inline {
+  --color-cream: var(--color-cream);
+  --color-blush: var(--color-blush);
+  --color-blush-deep: var(--color-blush-deep);
+  --color-sage: var(--color-sage);
+  --color-sage-deep: var(--color-sage-deep);
+  --color-rose: var(--color-rose);
+  --color-rose-deep: var(--color-rose-deep);
+  --color-gold: var(--color-gold);
+  --color-gold-deep: var(--color-gold-deep);
+  --color-plum: var(--color-plum);
+  --color-plum-soft: var(--color-plum-soft);
+
+  --font-display: var(--font-display);
+  --font-script: var(--font-script);
+  --font-body: var(--font-body);
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-plum);
+  font-family: var(--font-body), sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Visible keyboard focus ring, disciplined not garish */
+:focus-visible {
+  outline: 2px solid var(--color-gold-deep);
+  outline-offset: 3px;
+}

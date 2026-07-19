@@ -7,6 +7,13 @@ import { couple, media, openingGate } from "@/content";
 import { FloralDivider } from "./FloralDivider";
 import { Photo } from "./Photo";
 import { HangingBells } from "./HangingBells";
+import { GaneshIcon } from "./GaneshIcon";
+import { Petals } from "./Petals";
+
+// Normalized (0-1) heart outline, used as a clip-path so it scales cleanly
+// to whatever size the monogram frame renders at, on any screen.
+const HEART_PATH =
+  "M0.5,1 C0.5,1 0.05,0.6 0.05,0.32 C0.05,0.12 0.22,0 0.37,0 C0.46,0 0.5,0.08 0.5,0.18 C0.5,0.08 0.54,0 0.63,0 C0.78,0 0.95,0.12 0.95,0.32 C0.95,0.6 0.5,1 0.5,1 Z";
 
 export function OpeningGate({ onOpen }: { onOpen: () => void }) {
   return (
@@ -15,6 +22,8 @@ export function OpeningGate({ onOpen }: { onOpen: () => void }) {
       exit={{ opacity: 0, scale: 1.08 }}
       transition={{ duration: 0.8, ease: [0.4, 0.2, 0.2, 1] }}
     >
+      <Petals count={20} />
+
       <div className="pointer-events-none absolute -left-20 -top-20 h-64 w-64 rounded-full bg-sage/20 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-rose/20 blur-3xl" />
 
@@ -22,9 +31,18 @@ export function OpeningGate({ onOpen }: { onOpen: () => void }) {
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="mb-4 text-gold-deep"
+        className="mb-3 text-gold-deep"
       >
         <HangingBells className="h-10 w-28" />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: -6 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.35 }}
+        className="mb-2 text-gold-deep"
+      >
+        <GaneshIcon className="h-14 w-14" />
       </motion.div>
 
       <motion.button
@@ -35,35 +53,45 @@ export function OpeningGate({ onOpen }: { onOpen: () => void }) {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
         whileTap={{ scale: 0.94 }}
-        className="group flex flex-col items-center gap-6 rounded-full focus-visible:outline-offset-8"
+        className="group flex flex-col items-center gap-6 focus-visible:outline-offset-8"
       >
         <motion.span
           animate={{ scale: [1, 1.04, 1] }}
           transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
-          className="relative flex h-40 w-40 items-center justify-center overflow-hidden rounded-full border border-gold/50 bg-white/40 shadow-sm backdrop-blur-sm sm:h-48 sm:w-48"
+          className="relative flex h-44 w-44 items-start justify-center pt-9 sm:h-52 sm:w-52 sm:pt-11"
         >
-          {media.openingPhoto ? (
-            <Photo
-              src={media.openingPhoto}
-              alt={`${couple.groomName} and ${couple.brideName}`}
-              placeholderInitial={openingGate.monogramLeft}
-            />
-          ) : (
-            <span className="flex items-center gap-2 font-names text-4xl text-rose-deep sm:gap-3 sm:text-5xl">
-              {openingGate.monogramLeft}
-              {/* circular medallion, standing in for "&" */}
-              <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-gold-deep/60 bg-sage-deep/90 shadow-inner sm:h-14 sm:w-14">
-                <Image
-                  src={media.radhaKrishna}
-                  alt="Radha Krishna"
-                  fill
-                  className="object-cover object-top"
-                  sizes="56px"
-                />
+          {/* heart-shaped frame, filled with the monogram or a photo */}
+          <span
+            className="absolute inset-0 border border-gold/50 bg-white/40 shadow-sm backdrop-blur-sm"
+            style={{ clipPath: `path('${HEART_PATH}')` }}
+          />
+          <span
+            className="relative flex h-full w-full items-start justify-center overflow-hidden pt-9 sm:pt-11"
+            style={{ clipPath: `path('${HEART_PATH}')` }}
+          >
+            {media.openingPhoto ? (
+              <Photo
+                src={media.openingPhoto}
+                alt={`${couple.groomName} and ${couple.brideName}`}
+                placeholderInitial={openingGate.monogramLeft}
+              />
+            ) : (
+              <span className="flex items-center gap-2 font-names text-4xl text-rose-deep sm:gap-3 sm:text-5xl">
+                {openingGate.monogramLeft}
+                {/* circular medallion, standing in for "&" */}
+                <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border border-gold-deep/60 bg-sage-deep/90 shadow-inner sm:h-12 sm:w-12">
+                  <Image
+                    src={media.radhaKrishna}
+                    alt="Radha Krishna"
+                    fill
+                    className="object-cover object-top"
+                    sizes="48px"
+                  />
+                </span>
+                {openingGate.monogramRight}
               </span>
-              {openingGate.monogramRight}
-            </span>
-          )}
+            )}
+          </span>
         </motion.span>
 
         <FloralDivider className="h-4 w-24 text-gold-deep" />

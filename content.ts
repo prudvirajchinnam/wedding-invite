@@ -76,8 +76,7 @@ export const heroSection = {
 
 export const storyQuote = {
   quote:
-    "Six days of colour, laughter and love, and we'd be so happy for you to be part of every bit of it.",
-  signature: "With love, Akhil & Ruchitha",
+    "Five days of colour, laughter and love, and we'd be so happy for you to be part of every bit of it.",
 };
 
 // Each ceremony becomes a tap-to-reveal card. Add, remove, or reorder freely —
@@ -92,7 +91,7 @@ export type Ceremony = {
   mapsUrl: string; // Google Maps link, shown as a "Directions" button
   dressCode?: string;
   note: string; // the italic closing line on the card
-  accent: "blush" | "sage" | "gold" | "rose"; // controls the card's color theme
+  accent: "blush" | "sage" | "gold" | "rose" | "yellow"; // controls the card's color theme
   revealLabel: string; // e.g. "Rub to reveal", "Trace the heart", "Tap to open"
   // Used to build "Add to calendar" links. Keep in sync with `day` + `time` above.
   startIso: string;
@@ -110,7 +109,7 @@ export const ceremonies: Ceremony[] = [
     mapsUrl: "https://maps.app.goo.gl/Dq2fjnCwVcYcdtFL7",
     note: "The very first rituals of the celebration begin here.",
     accent: "gold",
-    revealLabel: "Tap to reveal",
+    revealLabel: "Scratch to reveal",
     startIso: "2026-08-24T08:00:00",
     endIso: "2026-08-24T11:00:00",
   },
@@ -124,7 +123,7 @@ export const ceremonies: Ceremony[] = [
     mapsUrl: "https://maps.app.goo.gl/Dq2fjnCwVcYcdtFL7",
     note: "Music, dance, and the whole family on its feet.",
     accent: "blush",
-    revealLabel: "Tap to reveal",
+    revealLabel: "Scratch to reveal",
     startIso: "2026-08-24T19:00:00",
     endIso: "2026-08-24T23:00:00",
   },
@@ -138,7 +137,7 @@ export const ceremonies: Ceremony[] = [
     mapsUrl: "https://maps.app.goo.gl/Dq2fjnCwVcYcdtFL7",
     dressCode: "Yellow & floral",
     note: "Turmeric, laughter, and the very first blessings.",
-    accent: "gold",
+    accent: "yellow",
     revealLabel: "Rub to reveal",
     startIso: "2026-08-25T08:00:00",
     endIso: "2026-08-25T11:00:00",
@@ -154,7 +153,7 @@ export const ceremonies: Ceremony[] = [
     dressCode: "Traditional",
     note: "The sacred vows — with your blessings.",
     accent: "sage",
-    revealLabel: "Tap to reveal",
+    revealLabel: "Scratch to reveal",
     startIso: "2026-08-26T11:24:00",
     endIso: "2026-08-26T14:00:00",
   },
@@ -168,7 +167,7 @@ export const ceremonies: Ceremony[] = [
     mapsUrl: "https://maps.app.goo.gl/Dq2fjnCwVcYcdtFL7",
     note: "A quiet morning of thanks, together with family.",
     accent: "rose",
-    revealLabel: "Tap to reveal",
+    revealLabel: "Scratch to reveal",
     startIso: "2026-08-27T09:00:00",
     endIso: "2026-08-27T11:30:00",
   },
@@ -183,24 +182,17 @@ export const ceremonies: Ceremony[] = [
     dressCode: "Evening formal",
     note: "One last celebration — thank you for being with us.",
     accent: "blush",
-    revealLabel: "Tap to reveal",
+    revealLabel: "Scratch to reveal",
     startIso: "2026-08-28T19:30:00",
     endIso: "2026-08-28T23:00:00",
   },
 ];
-
-export const teams = {
-  question: "Whose side are you cheering for? Tap to join — your pick rides along with your RSVP.",
-  groom: { label: "Team Groom", name: couple.groomName },
-  bride: { label: "Team Bride", name: couple.brideName },
-};
 
 export const venueSection = {
   title: "Where to find us",
   name: weddingDate.venueName,
   address: weddingDate.venueAddress,
   mapsUrl: "https://maps.app.goo.gl/bNbfXChZgAjaP99z7",
-  note: "Valet parking available. Ask any usher for directions to your ceremony.",
 };
 
 export const rsvpSection = {

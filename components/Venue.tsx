@@ -24,7 +24,6 @@ export function Venue() {
 
         <p className="mt-6 font-display text-xl italic text-plum">{venueSection.name}</p>
         <p className="mt-2 font-body text-sm text-plum-soft">{venueSection.address}</p>
-        <p className="mt-4 font-body text-sm text-plum-soft">{venueSection.note}</p>
 
         <a
           href={venueSection.mapsUrl}

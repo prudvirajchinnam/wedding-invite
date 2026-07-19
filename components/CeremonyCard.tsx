@@ -34,6 +34,12 @@ const accentStyles: Record<
     text: "text-sage-deep",
     iconBg: "bg-sage/20",
   },
+  yellow: {
+    bg: "bg-gradient-to-br from-[#fff8dc] to-[#fde68a]",
+    border: "border-amber-500/40",
+    text: "text-amber-700",
+    iconBg: "bg-amber-300/30",
+  },
 };
 
 export function CeremonyCard({

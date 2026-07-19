@@ -6,6 +6,10 @@ import { CeremonyCard } from "./CeremonyCard";
 import { FloralDivider } from "./FloralDivider";
 
 export function Festivities() {
+  // Count distinct calendar days, not events — some days (like Pellikoduku
+  // and Sangeet) share the same day, so this isn't just ceremonies.length.
+  const dayCount = new Set(ceremonies.map((c) => c.day)).size;
+
   return (
     <section id="festivities" className="bg-blush/60 px-6 py-20 sm:py-28">
       <motion.div
@@ -16,7 +20,7 @@ export function Festivities() {
         className="mx-auto max-w-2xl text-center"
       >
         <span className="font-body text-xs tracking-[0.3em] text-plum-soft uppercase">
-          {ceremonies.length} days of celebration
+          {dayCount} days of celebration
         </span>
         <h2 className="mt-3 font-display text-4xl italic text-plum sm:text-5xl">
           The Festivities

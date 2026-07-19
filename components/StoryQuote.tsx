@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { storyQuote } from "@/content";
+import { couple, storyQuote } from "@/content";
 import { FloralDivider } from "./FloralDivider";
 
 export function StoryQuote() {
@@ -18,8 +18,11 @@ export function StoryQuote() {
         <p className="font-display text-xl italic leading-relaxed text-plum sm:text-2xl">
           &ldquo;{storyQuote.quote}&rdquo;
         </p>
-        <p className="mt-6 font-script text-2xl text-rose-deep">
-          {storyQuote.signature}
+        <p className="mt-6 font-script text-xl text-plum-soft">
+          With love,{" "}
+          <span className="font-names text-2xl text-rose-deep">
+            {couple.groomName} &amp; {couple.brideName}
+          </span>
         </p>
       </motion.div>
     </section>

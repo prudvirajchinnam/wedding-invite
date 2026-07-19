@@ -6,6 +6,7 @@ import { couple, media, openingGate } from "@/content";
 import { FloralDivider } from "./FloralDivider";
 import { Photo } from "./Photo";
 import { HangingBells } from "./HangingBells";
+import { RadhaKrishnaIcon } from "./RadhaKrishnaIcon";
 
 export function OpeningGate({ onOpen }: { onOpen: () => void }) {
   return (
@@ -21,9 +22,18 @@ export function OpeningGate({ onOpen }: { onOpen: () => void }) {
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="mb-4 text-gold-deep"
+        className="mb-2 text-gold-deep"
       >
         <HangingBells className="h-10 w-28" />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: -6 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.35 }}
+        className="mb-3 text-gold-deep"
+      >
+        <RadhaKrishnaIcon className="h-12 w-12" />
       </motion.div>
 
       <motion.button
@@ -44,11 +54,11 @@ export function OpeningGate({ onOpen }: { onOpen: () => void }) {
           {media.openingPhoto ? (
             <Photo
               src={media.openingPhoto}
-              alt={`${couple.brideName} and ${couple.groomName}`}
+              alt={`${couple.groomName} and ${couple.brideName}`}
               placeholderInitial={openingGate.monogramLeft}
             />
           ) : (
-            <span className="font-script text-4xl text-rose-deep sm:text-5xl">
+            <span className="font-names text-4xl text-rose-deep sm:text-5xl">
               {openingGate.monogramLeft}
               <span className="mx-1 font-display text-xl italic text-gold-deep sm:text-2xl">
                 &amp;
@@ -72,7 +82,7 @@ export function OpeningGate({ onOpen }: { onOpen: () => void }) {
         transition={{ duration: 0.8, delay: 0.6 }}
         className="absolute bottom-10 font-display text-sm italic text-plum-soft/70"
       >
-        {couple.brideName} &amp; {couple.groomName} invite you
+        {couple.groomName} &amp; {couple.brideName} invite you
       </motion.p>
     </motion.div>
   );

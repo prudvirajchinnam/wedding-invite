@@ -156,16 +156,6 @@ export function RSVP() {
           >
             Send RSVP on WhatsApp
           </a>
-
-          <p className="text-center font-body text-xs text-plum-soft">
-            {rsvpSection.fallbackNote}
-            <br />
-            {rsvpSection.familyContacts.map((c) => (
-              <span key={c.name} className="mt-1 block">
-                {c.name} &middot; {c.phone}
-              </span>
-            ))}
-          </p>
         </div>
       </motion.div>
     </section>

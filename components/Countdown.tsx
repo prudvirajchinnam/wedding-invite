@@ -59,7 +59,7 @@ export function Countdown() {
           Counting down to
         </span>
         <h2 className="mt-3 font-script text-4xl text-blush sm:text-5xl">
-          {couple.brideName} &amp; {couple.groomName}
+          {couple.groomName} &amp; {couple.brideName}
         </h2>
         <FloralDivider className="mx-auto mt-5 h-5 w-32 text-gold" />
 

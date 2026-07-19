@@ -124,15 +124,26 @@ export function CeremonyCard({
               </p>
             </div>
 
-            <a
-              href={googleCalendarUrl(ceremony)}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className={`mt-4 inline-flex items-center justify-center rounded-full border ${styles.border} bg-white/70 px-4 py-2 font-body text-xs tracking-wide ${styles.text} transition-colors hover:bg-white`}
-            >
-              + Add to calendar
-            </a>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <a
+                href={googleCalendarUrl(ceremony)}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className={`inline-flex items-center justify-center rounded-full border ${styles.border} bg-white/70 px-4 py-2 font-body text-xs tracking-wide ${styles.text} transition-colors hover:bg-white`}
+              >
+                + Add to calendar
+              </a>
+              <a
+                href={ceremony.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className={`inline-flex items-center justify-center rounded-full border ${styles.border} bg-white/70 px-4 py-2 font-body text-xs tracking-wide ${styles.text} transition-colors hover:bg-white`}
+              >
+                Directions
+              </a>
+            </div>
           </div>
         </motion.div>
       </button>

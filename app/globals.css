@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+/* -------------------------------------------------------------------- */
+/* "CS Anetia Demo" — the couple's name font. This font isn't on Google  */
+/* Fonts, so it loads from a local file at /public/fonts/. Until that    */
+/* file is added, the browser simply can't find it and silently falls   */
+/* back to the next font in the --font-names stack below (Petit Formal   */
+/* Script) — so the site always looks intentional either way.            */
+/* See /public/fonts/README.md for exactly what file to add.             */
+/* -------------------------------------------------------------------- */
+@font-face {
+  font-family: "CS Anetia Demo";
+  src: url("/fonts/cs-anetia-demo.otf") format("opentype");
+  font-display: swap;
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   /* -------------------------------------------------------------------- */
   /* Design tokens — traditional ivory, gold & maroon wedding palette      */
@@ -22,6 +38,9 @@
   --font-display: "Fraunces", "Georgia", serif;
   --font-script: "Petit Formal Script", cursive;
   --font-body: "Jost", "Helvetica Neue", Arial, sans-serif;
+  /* Used specifically for "Akhil & Ruchitha" / "A & R" per request.
+     Falls back to the script font above until the font file is added. */
+  --font-names: "CS Anetia Demo", "Petit Formal Script", cursive;
 }
 
 @theme inline {
@@ -40,6 +59,7 @@
   --font-display: var(--font-display);
   --font-script: var(--font-script);
   --font-body: var(--font-body);
+  --font-names: var(--font-names);
 }
 
 body {

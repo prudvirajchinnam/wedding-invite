@@ -1,25 +1,31 @@
 // ============================================================================
 // WEDDING SITE CONTENT — edit everything here.
-// Nothing below this file needs to change to update your wedding details.
+// Nothing else needs to change to update your wedding details.
 // ============================================================================
 
 export const couple = {
+  // Displayed groom-first throughout the site (Akhil & Ruchitha), per request.
   brideName: "Ruchitha",
-  brideFullName: "Ruchitha",
-  brideParents: "Daughter of (parents' names)",
   groomName: "Akhil",
-  groomFullName: "Akhil",
-  groomParents: "Son of (parents' names)",
   hashtag: "#AkhilWedsRuchitha",
 };
 
 export const weddingDate = {
-  // ISO date used for the live countdown. Keep the format YYYY-MM-DDTHH:mm:ss
-  isoDateTime: "2026-08-26T18:00:00",
-  displayDate: "26th August 2026",
-  city: "Hyderabad",
-  venueName: "Taj Palace",
+  // ISO date used for the live countdown.
+  isoDateTime: "2026-08-26T11:24:00",
+  displayDate: "Wednesday, 26th August 2026",
+  muhurtham: "11:24 AM — \u201cTula Lagnam\u201d",
+  venueName: "Satya Conventions",
+  venueAddress: "Old Housing Board Colony, NH 7 Road, Kamareddy",
 };
+
+// -----------------------------------------------------------------------
+// FONTS — "Akhil & Ruchitha" and the "A & R" monogram use a custom font
+// (CS Anetia Demo). That font isn't on Google Fonts, so it's loaded from
+// /public/fonts/ — see the README there for how to add the file.
+// Until the file is added, the site automatically falls back to the
+// regular script font, so nothing breaks in the meantime.
+// -----------------------------------------------------------------------
 
 // -----------------------------------------------------------------------
 // PHOTOS — drop your image files into /public/images (any name, jpg/png/webp
@@ -40,8 +46,8 @@ export const media = {
     alt: `${couple.groomName}`,
   },
 
-  // Gallery grid — add, remove, or reorder freely, any length works.
-  // Set to an empty array [] to hide the gallery section entirely.
+  // Gallery — shown as a slideshow. Add, remove, or reorder freely, any
+  // length works. Set to an empty array [] to hide the gallery entirely.
   gallery: [
     { src: "/images/gallery-placeholder-1.svg", alt: "" },
     { src: "/images/gallery-placeholder-2.svg", alt: "" },
@@ -59,13 +65,12 @@ export const openingGate = {
 
 export const heroSection = {
   eyebrow: "Together with their families",
-  invitationLine: "request the honour of your presence",
   closingLine: "at their wedding celebration",
 };
 
 export const storyQuote = {
   quote:
-    "Two families, one story — four days of colour, laughter and love, and we'd be so happy for you to be part of every bit of it.",
+    "Six days of colour, laughter and love, and we'd be so happy for you to be part of every bit of it.",
   signature: "With love, Akhil & Ruchitha",
 };
 
@@ -73,105 +78,137 @@ export const storyQuote = {
 // the layout handles any number of events.
 export type Ceremony = {
   id: string;
-  day: string; // e.g. "Sunday, 23 August 2026"
+  day: string; // e.g. "Monday, 24 August 2026"
   title: string;
   subtitle: string;
   time: string;
   venue: string;
+  mapsUrl: string; // Google Maps link, shown as a "Directions" button
   dressCode?: string;
-  note: string; // the italic closing line, e.g. "Turmeric, laughter and the very first blessings."
+  note: string; // the italic closing line on the card
   accent: "blush" | "sage" | "gold" | "rose"; // controls the card's color theme
   revealLabel: string; // e.g. "Rub to reveal", "Trace the heart", "Tap to open"
   // Used to build "Add to calendar" links. Keep in sync with `day` + `time` above.
-  startIso: string; // e.g. "2026-08-23T18:00:00"
-  endIso: string; // e.g. "2026-08-23T21:00:00"
+  startIso: string;
+  endIso: string;
 };
 
 export const ceremonies: Ceremony[] = [
   {
+    id: "pellikoduku",
+    day: "Monday, 24 August 2026",
+    title: "Pellikoduku",
+    subtitle: "The groom's ceremony",
+    time: "8:00 AM onwards",
+    venue: "Ganapathi's Silk Tower, LB Nagar, Hyderabad",
+    mapsUrl: "https://maps.app.goo.gl/Dq2fjnCwVcYcdtFL7",
+    note: "The very first rituals of the celebration begin here.",
+    accent: "gold",
+    revealLabel: "Tap to reveal",
+    startIso: "2026-08-24T08:00:00",
+    endIso: "2026-08-24T11:00:00",
+  },
+  {
+    id: "sangeet",
+    day: "Monday, 24 August 2026",
+    title: "Sangeet",
+    subtitle: "An evening of song",
+    time: "7:00 PM onwards",
+    venue: "Ganapathi's Silk Tower, LB Nagar, Hyderabad",
+    mapsUrl: "https://maps.app.goo.gl/Dq2fjnCwVcYcdtFL7",
+    note: "Music, dance, and the whole family on its feet.",
+    accent: "blush",
+    revealLabel: "Tap to reveal",
+    startIso: "2026-08-24T19:00:00",
+    endIso: "2026-08-24T23:00:00",
+  },
+  {
     id: "haldi",
-    day: "Sunday, 23 August 2026",
+    day: "Tuesday, 25 August 2026",
     title: "Haldi",
-    subtitle: "Manjal Neerattu Vizha",
-    time: "6:00 PM onwards",
-    venue: "Taj Palace, Hyderabad",
+    subtitle: "Turmeric & blessings",
+    time: "8:00 AM onwards",
+    venue: "Ganapathi's Silk Tower, LB Nagar, Hyderabad",
+    mapsUrl: "https://maps.app.goo.gl/Dq2fjnCwVcYcdtFL7",
     dressCode: "Yellow & floral",
     note: "Turmeric, laughter, and the very first blessings.",
     accent: "gold",
     revealLabel: "Rub to reveal",
-    startIso: "2026-08-23T18:00:00",
-    endIso: "2026-08-23T21:00:00",
-  },
-  {
-    id: "mehndi",
-    day: "Monday, 24 August 2026",
-    title: "Mehndi",
-    subtitle: "Where henna meets hearts",
-    time: "5:30 PM onwards",
-    venue: "Taj Palace, Hyderabad",
-    dressCode: "Pastel & floral",
-    note: "The deeper the mehndi, the deeper the love.",
-    accent: "rose",
-    revealLabel: "Trace to reveal",
-    startIso: "2026-08-24T17:30:00",
-    endIso: "2026-08-24T21:00:00",
-  },
-  {
-    id: "sangeet",
-    day: "Tuesday, 25 August 2026",
-    title: "Sangeet",
-    subtitle: "An evening of song",
-    time: "6:00 PM onwards",
-    venue: "Taj Palace, Hyderabad",
-    dressCode: "Shimmer & shine",
-    note: "Music, dance, and the whole family on its feet.",
-    accent: "blush",
-    revealLabel: "Tap to reveal",
-    startIso: "2026-08-25T18:00:00",
-    endIso: "2026-08-25T23:00:00",
+    startIso: "2026-08-25T08:00:00",
+    endIso: "2026-08-25T11:00:00",
   },
   {
     id: "wedding",
     day: "Wednesday, 26 August 2026",
     title: "The Wedding",
-    subtitle: "The Muhurtham",
-    time: "6:00 PM onwards",
-    venue: "Taj Palace, Hyderabad",
+    subtitle: "Tula Lagnam",
+    time: "11:24 AM",
+    venue: "Satya Conventions, Old Housing Board Colony, NH 7 Road, Kamareddy",
+    mapsUrl: "https://maps.app.goo.gl/bNbfXChZgAjaP99z7",
     dressCode: "Traditional",
     note: "The sacred vows — with your blessings.",
     accent: "sage",
     revealLabel: "Tap to reveal",
-    startIso: "2026-08-26T18:00:00",
-    endIso: "2026-08-26T22:00:00",
+    startIso: "2026-08-26T11:24:00",
+    endIso: "2026-08-26T14:00:00",
+  },
+  {
+    id: "satyanarayana",
+    day: "Thursday, 27 August 2026",
+    title: "Satyanarayana Vratham",
+    subtitle: "A prayer of gratitude",
+    time: "9:00 AM onwards",
+    venue: "Ganapathi's Silk Tower, LB Nagar, Hyderabad",
+    mapsUrl: "https://maps.app.goo.gl/Dq2fjnCwVcYcdtFL7",
+    note: "A quiet morning of thanks, together with family.",
+    accent: "rose",
+    revealLabel: "Tap to reveal",
+    startIso: "2026-08-27T09:00:00",
+    endIso: "2026-08-27T11:30:00",
+  },
+  {
+    id: "reception",
+    day: "Friday, 28 August 2026",
+    title: "Reception",
+    subtitle: "Join us for the evening",
+    time: "7:30 PM onwards",
+    venue: "Rock Banquet & Convention, Chinthalkunta, LB Nagar, Hyderabad",
+    mapsUrl: "https://maps.app.goo.gl/pwooZX3F6qDSJBs19",
+    dressCode: "Evening formal",
+    note: "One last celebration — thank you for being with us.",
+    accent: "blush",
+    revealLabel: "Tap to reveal",
+    startIso: "2026-08-28T19:30:00",
+    endIso: "2026-08-28T23:00:00",
   },
 ];
 
 export const teams = {
   question: "Whose side are you cheering for? Tap to join — your pick rides along with your RSVP.",
-  bride: { label: "Team Bride", name: couple.brideName },
   groom: { label: "Team Groom", name: couple.groomName },
+  bride: { label: "Team Bride", name: couple.brideName },
 };
 
 export const venueSection = {
   title: "Where to find us",
-  name: "Taj Palace, Hyderabad",
-  address: "Road No. 12, Banjara Hills, Hyderabad, Telangana",
-  mapsUrl: "https://maps.google.com/?q=Taj+Palace+Hyderabad",
+  name: weddingDate.venueName,
+  address: weddingDate.venueAddress,
+  mapsUrl: "https://maps.app.goo.gl/bNbfXChZgAjaP99z7",
   note: "Valet parking available. Ask any usher for directions to your ceremony.",
 };
 
 export const rsvpSection = {
   title: "Will you join us?",
-  subtitle: "Kindly respond by 20th July 2026",
-  whatsappNumber: "919876543210", // country code + number, no + or spaces
-  fallbackNote: "Prefer to call? Reach the family directly.",
-  familyContacts: [
-    { name: "Bride's family", phone: "+91 90000 00001" },
-    { name: "Groom's family", phone: "+91 90000 00002" },
-  ],
+  subtitle: "Kindly respond soon",
+  // RSVP taps open WhatsApp with a pre-filled message addressed to this
+  // number — whoever's number this is will receive each guest's RSVP as a
+  // WhatsApp message once the guest hits "send" on their end.
+  // TODO: replace with the real number (country code + number, no + or spaces)
+  whatsappNumber: "911234567890",
 };
 
 export const footerSection = {
   blessingLine: "With the blessings of our elders and the warmth of your presence",
   closingNote: "We can't wait to celebrate with you.",
+  designCredit: "PR Creatives",
 };

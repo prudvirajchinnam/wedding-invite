@@ -11,7 +11,7 @@ import { HangingBells } from "./HangingBells";
 // gate. `revealed` flips true at that moment and this stagger plays once.
 export function Hero({ revealed }: { revealed: boolean }) {
   return (
-    <section className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-blush via-cream to-cream px-6 text-center">
+    <section className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-blush via-cream to-cream px-6 py-24 text-center">
       {revealed && <Petals />}
 
       {/* draping banana-leaf corners */}
@@ -50,14 +50,15 @@ export function Hero({ revealed }: { revealed: boolean }) {
         transition={{ duration: 0.9, delay: 0.3 }}
         className="mt-6 flex flex-col items-center"
       >
-        <span className="font-script text-5xl text-rose-deep sm:text-7xl">
-          {couple.brideName}
+        {/* groom first, then bride, per request */}
+        <span className="font-names text-5xl text-rose-deep sm:text-7xl">
+          {couple.groomName}
         </span>
         <span className="my-2 font-display text-2xl italic text-gold-deep sm:text-3xl">
           &amp;
         </span>
-        <span className="font-script text-5xl text-rose-deep sm:text-7xl">
-          {couple.groomName}
+        <span className="font-names text-5xl text-rose-deep sm:text-7xl">
+          {couple.brideName}
         </span>
       </motion.div>
 
@@ -79,19 +80,23 @@ export function Hero({ revealed }: { revealed: boolean }) {
         {heroSection.closingLine}
       </motion.p>
 
-      <motion.p
+      <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={revealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
         transition={{ duration: 0.8, delay: 0.9 }}
-        className="mt-4 font-body text-sm tracking-wide text-plum-soft"
+        className="mt-4 flex flex-col items-center gap-1 font-body text-sm tracking-wide text-plum-soft"
       >
-        {weddingDate.displayDate} &middot; {weddingDate.venueName}, {weddingDate.city}
-      </motion.p>
+        <span>
+          {weddingDate.displayDate} at {weddingDate.muhurtham}
+        </span>
+        <span className="font-display italic text-plum">{weddingDate.venueName}</span>
+        <span>{weddingDate.venueAddress}</span>
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={revealed ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8, delay: 1.05 }}
+        transition={{ duration: 0.8, delay: 1.1 }}
         className="mt-6 inline-flex items-center rounded-full border border-gold/40 bg-white/50 px-5 py-2 font-body text-xs tracking-[0.2em] text-gold-deep uppercase backdrop-blur-sm"
       >
         {couple.hashtag}
@@ -106,7 +111,7 @@ export function Hero({ revealed }: { revealed: boolean }) {
         }
         transition={{
           duration: 2,
-          delay: 1.5,
+          delay: 1.6,
           repeat: Infinity,
           repeatType: "loop",
           repeatDelay: 0.5,

@@ -29,27 +29,6 @@ export function TeamPicker() {
         <div className="mt-8 flex items-center justify-center gap-2 sm:gap-6">
           <button
             type="button"
-            onClick={() => setPick("bride")}
-            aria-pressed={pick === "bride"}
-            className={`flex w-28 flex-col items-center gap-2 rounded-2xl border px-2 py-5 transition-all sm:w-44 sm:px-4 sm:py-6 ${
-              pick === "bride"
-                ? "border-rose-deep bg-rose/20 shadow-md scale-105"
-                : "border-rose-deep/20 bg-white/60 hover:border-rose-deep/50"
-            }`}
-          >
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-rose/30 font-display text-base italic text-rose-deep sm:h-12 sm:w-12 sm:text-lg">
-              {teams.bride.name[0]}
-            </span>
-            <span className="font-body text-[10px] tracking-wide text-plum-soft uppercase sm:text-xs">
-              {teams.bride.label}
-            </span>
-            <span className="font-script text-xl text-rose-deep sm:text-2xl">{teams.bride.name}</span>
-          </button>
-
-          <span className="font-display text-sm italic text-plum-soft">vs</span>
-
-          <button
-            type="button"
             onClick={() => setPick("groom")}
             aria-pressed={pick === "groom"}
             className={`flex w-28 flex-col items-center gap-2 rounded-2xl border px-2 py-5 transition-all sm:w-44 sm:px-4 sm:py-6 ${
@@ -65,6 +44,27 @@ export function TeamPicker() {
               {teams.groom.label}
             </span>
             <span className="font-script text-xl text-sage-deep sm:text-2xl">{teams.groom.name}</span>
+          </button>
+
+          <span className="font-display text-sm italic text-plum-soft">vs</span>
+
+          <button
+            type="button"
+            onClick={() => setPick("bride")}
+            aria-pressed={pick === "bride"}
+            className={`flex w-28 flex-col items-center gap-2 rounded-2xl border px-2 py-5 transition-all sm:w-44 sm:px-4 sm:py-6 ${
+              pick === "bride"
+                ? "border-rose-deep bg-rose/20 shadow-md scale-105"
+                : "border-rose-deep/20 bg-white/60 hover:border-rose-deep/50"
+            }`}
+          >
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-rose/30 font-display text-base italic text-rose-deep sm:h-12 sm:w-12 sm:text-lg">
+              {teams.bride.name[0]}
+            </span>
+            <span className="font-body text-[10px] tracking-wide text-plum-soft uppercase sm:text-xs">
+              {teams.bride.label}
+            </span>
+            <span className="font-script text-xl text-rose-deep sm:text-2xl">{teams.bride.name}</span>
           </button>
         </div>
 

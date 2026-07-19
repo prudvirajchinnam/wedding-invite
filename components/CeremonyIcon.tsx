@@ -79,11 +79,81 @@ function WeddingIcon({ className }: IconProps) {
   );
 }
 
+function PellikodukuIcon({ className }: IconProps) {
+  // A simple kalash (ceremonial pot) with mango leaves and a coconut top —
+  // used to mark the groom's opening rituals.
+  return (
+    <svg viewBox="0 0 64 64" className={className} fill="none" aria-hidden="true">
+      <path
+        d="M22 34 C22 26 42 26 42 34 C42 46 38 52 32 52 C26 52 22 46 22 34 Z"
+        fill="currentColor"
+        fillOpacity="0.75"
+      />
+      <rect x="28" y="18" width="8" height="10" rx="2" fill="currentColor" fillOpacity="0.85" />
+      <path
+        d="M20 20 C24 14 28 18 32 14 C36 18 40 14 44 20"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        fill="none"
+        strokeLinecap="round"
+      />
+      <circle cx="32" cy="12" r="2.5" fill="currentColor" fillOpacity="0.8" />
+    </svg>
+  );
+}
+
+function SatyanarayanaIcon({ className }: IconProps) {
+  // A simple oil lamp (diya) with a flame — for a puja / prayer ceremony.
+  return (
+    <svg viewBox="0 0 64 64" className={className} fill="none" aria-hidden="true">
+      <path
+        d="M16 42 C16 36 24 34 32 34 C40 34 48 36 48 42 C48 46 41 48 32 48 C23 48 16 46 16 42 Z"
+        fill="currentColor"
+        fillOpacity="0.8"
+      />
+      <path
+        d="M32 30 C29 25 30 20 32 16 C34 20 35 25 32 30 Z"
+        fill="currentColor"
+        fillOpacity="0.9"
+      />
+    </svg>
+  );
+}
+
+function ReceptionIcon({ className }: IconProps) {
+  // Two clinking toast glasses.
+  return (
+    <svg viewBox="0 0 64 64" className={className} fill="none" aria-hidden="true">
+      <path
+        d="M20 18 L28 18 L26 32 C26 36 22 36 22 32 Z"
+        stroke="currentColor"
+        strokeWidth="2"
+        fill="currentColor"
+        fillOpacity="0.15"
+        transform="rotate(-18 24 25)"
+      />
+      <path
+        d="M36 18 L44 18 L42 32 C42 36 38 36 38 32 Z"
+        stroke="currentColor"
+        strokeWidth="2"
+        fill="currentColor"
+        fillOpacity="0.15"
+        transform="rotate(18 40 25)"
+      />
+      <line x1="22" y1="46" x2="22" y2="38" stroke="currentColor" strokeWidth="2" transform="rotate(-18 24 25)" />
+      <line x1="42" y1="46" x2="42" y2="38" stroke="currentColor" strokeWidth="2" transform="rotate(18 40 25)" />
+    </svg>
+  );
+}
+
 const iconMap: Record<string, (p: IconProps) => React.ReactElement> = {
   haldi: HaldiIcon,
   mehndi: MehndiIcon,
   sangeet: SangeetIcon,
   wedding: WeddingIcon,
+  pellikoduku: PellikodukuIcon,
+  satyanarayana: SatyanarayanaIcon,
+  reception: ReceptionIcon,
 };
 
 export function CeremonyIcon({

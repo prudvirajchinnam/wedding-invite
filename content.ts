@@ -46,6 +46,10 @@ export const media = {
     alt: `${couple.groomName}`,
   },
 
+  // Uploaded Radha-Krishna artwork, shown as a small circular medallion
+  // between "A" and "R" on the tap-to-open gate.
+  radhaKrishna: "/images/radha-krishna.png",
+
   // Gallery — shown as a slideshow. Add, remove, or reorder freely, any
   // length works. Set to an empty array [] to hide the gallery entirely.
   gallery: [

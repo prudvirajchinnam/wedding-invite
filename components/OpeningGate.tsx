@@ -1,12 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Mail } from "lucide-react";
 import { couple, media, openingGate } from "@/content";
 import { FloralDivider } from "./FloralDivider";
 import { Photo } from "./Photo";
 import { HangingBells } from "./HangingBells";
-import { RadhaKrishnaIcon } from "./RadhaKrishnaIcon";
 
 export function OpeningGate({ onOpen }: { onOpen: () => void }) {
   return (
@@ -51,10 +51,15 @@ export function OpeningGate({ onOpen }: { onOpen: () => void }) {
           ) : (
             <span className="flex items-center gap-2 font-names text-4xl text-rose-deep sm:gap-3 sm:text-5xl">
               {openingGate.monogramLeft}
-              {/* circular medallion, standing in for "&" — original line-art,
-                  not a reproduction of any existing seal or photo */}
-              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-gold-deep/60 bg-sage-deep/90 p-1.5 shadow-inner sm:h-11 sm:w-11">
-                <RadhaKrishnaIcon className="h-full w-full text-gold" />
+              {/* circular medallion, standing in for "&" */}
+              <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-gold-deep/60 bg-sage-deep/90 shadow-inner sm:h-14 sm:w-14">
+                <Image
+                  src={media.radhaKrishna}
+                  alt="Radha Krishna"
+                  fill
+                  className="object-cover object-top"
+                  sizes="56px"
+                />
               </span>
               {openingGate.monogramRight}
             </span>

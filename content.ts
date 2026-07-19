@@ -61,6 +61,8 @@ export const openingGate = {
   monogramLeft: "A",
   monogramRight: "R",
   tapPrompt: "Tap to open",
+  // Shown at the bottom of the gate — typically the hosting family.
+  hostNote: "Bakki Chandrakala & Bakki Anand invite you",
 };
 
 export const heroSection = {

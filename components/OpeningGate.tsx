@@ -22,18 +22,9 @@ export function OpeningGate({ onOpen }: { onOpen: () => void }) {
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="mb-2 text-gold-deep"
+        className="mb-4 text-gold-deep"
       >
         <HangingBells className="h-10 w-28" />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: -6 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.35 }}
-        className="mb-3 text-gold-deep"
-      >
-        <RadhaKrishnaIcon className="h-12 w-12" />
       </motion.div>
 
       <motion.button
@@ -58,10 +49,12 @@ export function OpeningGate({ onOpen }: { onOpen: () => void }) {
               placeholderInitial={openingGate.monogramLeft}
             />
           ) : (
-            <span className="font-names text-4xl text-rose-deep sm:text-5xl">
+            <span className="flex items-center gap-2 font-names text-4xl text-rose-deep sm:gap-3 sm:text-5xl">
               {openingGate.monogramLeft}
-              <span className="mx-1 font-display text-xl italic text-gold-deep sm:text-2xl">
-                &amp;
+              {/* circular medallion, standing in for "&" — original line-art,
+                  not a reproduction of any existing seal or photo */}
+              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-gold-deep/60 bg-sage-deep/90 p-1.5 shadow-inner sm:h-11 sm:w-11">
+                <RadhaKrishnaIcon className="h-full w-full text-gold" />
               </span>
               {openingGate.monogramRight}
             </span>
@@ -80,9 +73,9 @@ export function OpeningGate({ onOpen }: { onOpen: () => void }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.6 }}
-        className="absolute bottom-10 font-display text-sm italic text-plum-soft/70"
+        className="absolute bottom-10 max-w-xs font-display text-sm italic text-plum-soft/70"
       >
-        {couple.groomName} &amp; {couple.brideName} invite you
+        {openingGate.hostNote}
       </motion.p>
     </motion.div>
   );

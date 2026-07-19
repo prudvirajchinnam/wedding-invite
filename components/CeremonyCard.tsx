@@ -52,7 +52,7 @@ export function CeremonyCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.6, delay: index * 0.08 }}
-      className="[perspective:1200px]"
+      className="mx-auto w-full max-w-sm [perspective:1200px]"
     >
       <button
         type="button"

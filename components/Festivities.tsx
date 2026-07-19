@@ -27,7 +27,7 @@ export function Festivities() {
         </p>
       </motion.div>
 
-      <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 place-items-center gap-8 sm:grid-cols-2">
+      <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-8 sm:grid-cols-2">
         {ceremonies.map((ceremony, i) => (
           <CeremonyCard key={ceremony.id} ceremony={ceremony} index={i} />
         ))}

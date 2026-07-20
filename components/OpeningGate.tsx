@@ -7,8 +7,6 @@ import { couple, media, openingGate } from "@/content";
 import { FloralDivider } from "./FloralDivider";
 import { Photo } from "./Photo";
 import { HangingBells } from "./HangingBells";
-import { GaneshIcon } from "./GaneshIcon";
-import { Petals } from "./Petals";
 
 // Normalized (0-1) heart outline, used as a clip-path so it scales cleanly
 // to whatever size the monogram frame renders at, on any screen.
@@ -22,8 +20,6 @@ export function OpeningGate({ onOpen }: { onOpen: () => void }) {
       exit={{ opacity: 0, scale: 1.08 }}
       transition={{ duration: 0.8, ease: [0.4, 0.2, 0.2, 1] }}
     >
-      <Petals count={20} />
-
       <div className="pointer-events-none absolute -left-20 -top-20 h-64 w-64 rounded-full bg-sage/20 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-rose/20 blur-3xl" />
 
@@ -31,18 +27,9 @@ export function OpeningGate({ onOpen }: { onOpen: () => void }) {
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="mb-3 text-gold-deep"
+        className="mb-4 text-gold-deep"
       >
         <HangingBells className="h-10 w-28" />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: -6 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.35 }}
-        className="mb-2 text-gold-deep"
-      >
-        <GaneshIcon className="h-14 w-14" />
       </motion.div>
 
       <motion.button
@@ -78,7 +65,7 @@ export function OpeningGate({ onOpen }: { onOpen: () => void }) {
             ) : (
               <span className="flex items-center gap-2 font-names text-4xl text-rose-deep sm:gap-3 sm:text-5xl">
                 {openingGate.monogramLeft}
-                {/* circular medallion, standing in for "&" */}
+                {/* circular medallion, standing in for "&" — unchanged */}
                 <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border border-gold-deep/60 bg-sage-deep/90 shadow-inner sm:h-12 sm:w-12">
                   <Image
                     src={media.radhaKrishna}

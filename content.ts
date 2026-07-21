@@ -209,4 +209,7 @@ export const footerSection = {
   blessingLine: "With the blessings of our elders and the warmth of your presence",
   closingNote: "We can't wait to celebrate with you.",
   designCredit: "PR Creatives",
+  youtubeUrl: "https://www.youtube.com/@prcreatives",
+  portfolioUrl:
+    "https://www.wedmegood.com/profile/PR-Creatives-629273?srsltid=AfmBOoqQW9FmDJV-GXsLYix4VEZdqVaYQ6zu3NySDY29PF6XSFPMndn9",
 };

@@ -6,7 +6,8 @@ import { motion } from "framer-motion";
 const PETAL_COLORS = [
   "var(--color-rose)",
   "var(--color-rose-deep)",
-  "var(--color-blush-deep)",
+  "#e59aa8", // a brighter rose-pink, kept distinct from the golden palette
+             // so petals never blend into the cream/blush background
 ];
 const LEAF_COLORS = ["var(--color-sage)", "var(--color-sage-deep)"];
 
@@ -26,15 +27,18 @@ type Particle = {
 
 function generateParticles(count: number): Particle[] {
   return Array.from({ length: count }).map((_, i) => {
-    const kind: Kind = i % 2 === 0 ? "petal" : "leaf";
+    // Favor petals over leaves (3:2) since petals are the more prominent
+    // "wedding" motif and were getting visually lost before.
+    const kind: Kind = i % 5 < 3 ? "petal" : "leaf";
     const colors = kind === "petal" ? PETAL_COLORS : LEAF_COLORS;
     return {
       id: i,
       kind,
       left: Math.random() * 100,
-      size: kind === "petal" ? 8 + Math.random() * 9 : 9 + Math.random() * 8,
-      duration: 9 + Math.random() * 9,
-      delay: Math.random() * 10,
+      size: kind === "petal" ? 9 + Math.random() * 10 : 9 + Math.random() * 8,
+      // Faster fall than before (was 9-18s, now 6-12s).
+      duration: 6 + Math.random() * 6,
+      delay: Math.random() * 6,
       color: colors[i % colors.length],
       drift: Math.random() * 70 - 35,
       startRotate: Math.random() * 360,

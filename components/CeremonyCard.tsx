@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, type PanInfo } from "framer-motion";
 import type { Ceremony } from "@/content";
 import { CeremonyIcon } from "./CeremonyIcon";
 import { googleCalendarUrl } from "@/lib/calendar";
@@ -42,6 +42,12 @@ const accentStyles: Record<
   },
 };
 
+// A plain tap no longer flips the card — since the label says "scratch",
+// "rub", or "trace", it now takes an actual drag gesture past this many
+// pixels of cumulative movement to reveal. Tapping an already-revealed
+// card still flips it back closed, for convenience.
+const REVEAL_DRAG_THRESHOLD = 35;
+
 export function CeremonyCard({
   ceremony,
   index,
@@ -50,7 +56,24 @@ export function CeremonyCard({
   index: number;
 }) {
   const [revealed, setRevealed] = useState(false);
+  const dragDistance = useRef(0);
   const styles = accentStyles[ceremony.accent];
+
+  const handlePanStart = () => {
+    dragDistance.current = 0;
+  };
+
+  const handlePan = (_event: unknown, info: PanInfo) => {
+    dragDistance.current += Math.abs(info.delta.x) + Math.abs(info.delta.y);
+    if (!revealed && dragDistance.current > REVEAL_DRAG_THRESHOLD) {
+      setRevealed(true);
+    }
+  };
+
+  const handleClick = () => {
+    // Only close on a plain tap; opening requires the drag gesture above.
+    if (revealed) setRevealed(false);
+  };
 
   return (
     <motion.div
@@ -60,12 +83,14 @@ export function CeremonyCard({
       transition={{ duration: 0.6, delay: index * 0.08 }}
       className="mx-auto w-full max-w-sm [perspective:1200px]"
     >
-      <button
+      <motion.button
         type="button"
-        onClick={() => setRevealed((r) => !r)}
+        onClick={handleClick}
+        onPanStart={handlePanStart}
+        onPan={handlePan}
         aria-pressed={revealed}
-        aria-label={`${revealed ? "Hide" : "Reveal"} details for ${ceremony.title}`}
-        className="group relative block h-72 w-full max-w-sm cursor-pointer text-left sm:h-80"
+        aria-label={`${revealed ? "Hide" : "Scratch or drag to reveal"} details for ${ceremony.title}`}
+        className="group relative block h-72 w-full max-w-sm cursor-pointer touch-none select-none text-left sm:h-80"
         style={{ transformStyle: "preserve-3d" }}
       >
         <motion.div
@@ -152,7 +177,7 @@ export function CeremonyCard({
             </div>
           </div>
         </motion.div>
-      </button>
+      </motion.button>
     </motion.div>
   );
 }

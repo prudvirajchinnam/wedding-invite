@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import type { Ceremony } from "@/content";
 import { CeremonyIcon } from "./CeremonyIcon";
 import { icsDataUrl } from "@/lib/calendar";
+import { ScratchOverlay } from "./ScratchOverlay";
 
 const accentStyles: Record<
   Ceremony["accent"],
@@ -58,25 +59,70 @@ export function CeremonyCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.6, delay: index * 0.08 }}
-      className="mx-auto w-full max-w-sm [perspective:1200px]"
+      className="mx-auto w-full max-w-sm"
     >
-      <button
-        type="button"
-        onClick={() => setRevealed((r) => !r)}
-        aria-pressed={revealed}
-        aria-label={`${revealed ? "Hide" : "Reveal"} details for ${ceremony.title}`}
-        className="group relative block h-72 w-full max-w-sm cursor-pointer text-left sm:h-80"
-        style={{ transformStyle: "preserve-3d" }}
+      <div
+        className={`relative h-72 w-full max-w-sm overflow-hidden rounded-2xl border ${styles.border} ${styles.bg} shadow-sm sm:h-80`}
       >
-        <motion.div
-          className="relative h-full w-full"
-          style={{ transformStyle: "preserve-3d" }}
-          animate={{ rotateY: revealed ? 180 : 0 }}
-          transition={{ duration: 0.7, ease: [0.4, 0.2, 0.2, 1] }}
-        >
-          {/* FRONT */}
-          <div
-            className={`absolute inset-0 flex flex-col items-center justify-center rounded-2xl border ${styles.border} ${styles.bg} p-6 text-center shadow-sm [backface-visibility:hidden]`}
+        {/* DETAILS — always sits underneath, no flip involved */}
+        <div className="flex h-full flex-col justify-between p-6">
+          <div>
+            <span className="font-body text-[11px] tracking-[0.2em] text-plum-soft/80 uppercase">
+              {ceremony.day}
+            </span>
+            <h3 className="mt-1 font-display text-2xl italic text-plum">
+              {ceremony.title}
+            </h3>
+            <p className="font-body text-sm text-plum-soft">{ceremony.subtitle}</p>
+
+            <dl className="mt-4 space-y-1.5 font-body text-sm text-plum">
+              <div className="flex gap-2">
+                <dt className={`font-medium ${styles.text}`}>Time</dt>
+                <dd>{ceremony.time}</dd>
+              </div>
+              <div className="flex gap-2">
+                <dt className={`font-medium ${styles.text}`}>Venue</dt>
+                <dd>{ceremony.venue}</dd>
+              </div>
+              {ceremony.dressCode && (
+                <div className="flex gap-2">
+                  <dt className={`font-medium ${styles.text}`}>Dress</dt>
+                  <dd>{ceremony.dressCode}</dd>
+                </div>
+              )}
+            </dl>
+
+            <p className="mt-3 font-display text-sm italic text-plum-soft">
+              &ldquo;{ceremony.note}&rdquo;
+            </p>
+          </div>
+
+          <div className="mt-4 flex flex-wrap gap-2">
+            <a
+              href={icsDataUrl(ceremony)}
+              onClick={(e) => e.stopPropagation()}
+              className={`inline-flex items-center justify-center rounded-full border ${styles.border} bg-white/70 px-4 py-2 font-body text-xs tracking-wide ${styles.text} transition-colors hover:bg-white`}
+            >
+              + Add to calendar
+            </a>
+            <a
+              href={ceremony.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className={`inline-flex items-center justify-center rounded-full border ${styles.border} bg-white/70 px-4 py-2 font-body text-xs tracking-wide ${styles.text} transition-colors hover:bg-white`}
+            >
+              Directions
+            </a>
+          </div>
+        </div>
+
+        {/* COVER — the scratchable layer. Drag across it (or tap) to
+            uncover the details underneath; no flip, just a real erase. */}
+        {!revealed && (
+          <ScratchOverlay
+            onRevealed={() => setRevealed(true)}
+            className={`absolute inset-0 flex flex-col items-center justify-center ${styles.bg} p-6 text-center`}
           >
             <span className="font-body text-[11px] tracking-[0.25em] text-plum-soft/80 uppercase">
               {ceremony.day.split(",")[0]}
@@ -88,70 +134,13 @@ export function CeremonyCard({
               {ceremony.title}
             </h3>
             <span
-              className={`mt-6 inline-flex items-center gap-2 rounded-full border ${styles.border} bg-white/50 px-4 py-1.5 font-body text-[11px] tracking-[0.15em] ${styles.text} uppercase backdrop-blur-sm transition-transform group-hover:scale-105`}
+              className={`mt-6 inline-flex items-center gap-2 rounded-full border ${styles.border} bg-white/50 px-4 py-1.5 font-body text-[11px] tracking-[0.15em] ${styles.text} uppercase backdrop-blur-sm`}
             >
               {ceremony.revealLabel}
             </span>
-          </div>
-
-          {/* BACK */}
-          <div
-            className={`absolute inset-0 flex flex-col justify-between overflow-y-auto rounded-2xl border ${styles.border} ${styles.bg} p-6 shadow-sm [backface-visibility:hidden]`}
-            style={{ transform: "rotateY(180deg)" }}
-          >
-            <div>
-              <span className="font-body text-[11px] tracking-[0.2em] text-plum-soft/80 uppercase">
-                {ceremony.day}
-              </span>
-              <h3 className="mt-1 font-display text-2xl italic text-plum">
-                {ceremony.title}
-              </h3>
-              <p className="font-body text-sm text-plum-soft">{ceremony.subtitle}</p>
-
-              <dl className="mt-4 space-y-1.5 font-body text-sm text-plum">
-                <div className="flex gap-2">
-                  <dt className={`font-medium ${styles.text}`}>Time</dt>
-                  <dd>{ceremony.time}</dd>
-                </div>
-                <div className="flex gap-2">
-                  <dt className={`font-medium ${styles.text}`}>Venue</dt>
-                  <dd>{ceremony.venue}</dd>
-                </div>
-                {ceremony.dressCode && (
-                  <div className="flex gap-2">
-                    <dt className={`font-medium ${styles.text}`}>Dress</dt>
-                    <dd>{ceremony.dressCode}</dd>
-                  </div>
-                )}
-              </dl>
-
-              <p className="mt-3 font-display text-sm italic text-plum-soft">
-                &ldquo;{ceremony.note}&rdquo;
-              </p>
-            </div>
-
-            <div className="mt-4 flex flex-wrap gap-2">
-              <a
-                href={icsDataUrl(ceremony)}
-                download={`${ceremony.id}.ics`}
-                onClick={(e) => e.stopPropagation()}
-                className={`inline-flex items-center justify-center rounded-full border ${styles.border} bg-white/70 px-4 py-2 font-body text-xs tracking-wide ${styles.text} transition-colors hover:bg-white`}
-              >
-                + Add to calendar
-              </a>
-              <a
-                href={ceremony.mapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className={`inline-flex items-center justify-center rounded-full border ${styles.border} bg-white/70 px-4 py-2 font-body text-xs tracking-wide ${styles.text} transition-colors hover:bg-white`}
-              >
-                Directions
-              </a>
-            </div>
-          </div>
-        </motion.div>
-      </button>
+          </ScratchOverlay>
+        )}
+      </div>
     </motion.div>
   );
 }

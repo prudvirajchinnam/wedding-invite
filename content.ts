@@ -119,7 +119,7 @@ export const ceremonies: Ceremony[] = [
     title: "Sangeet",
     subtitle: "An evening of song",
     time: "7:00 PM onwards",
-    venue: "Ganapathi's Silk Tower, LB Nagar, Hyderabad",
+    venue: "Club House, Ganapathi Silk Tower, LB Nagar, Hyderabad",
     mapsUrl: "https://maps.app.goo.gl/Dq2fjnCwVcYcdtFL7",
     note: "Music, dance, and the whole family on its feet.",
     accent: "blush",

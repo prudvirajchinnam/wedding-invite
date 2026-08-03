@@ -6,7 +6,6 @@ import { Festivities } from "@/components/Festivities";
 import { Gallery } from "@/components/Gallery";
 import { Countdown } from "@/components/Countdown";
 import { Venue } from "@/components/Venue";
-import { RSVP } from "@/components/RSVP";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -25,7 +24,6 @@ export default function AkhilRuchithaWedding() {
       <Gallery />
       <Countdown />
       <Venue />
-      <RSVP />
       <Footer />
     </main>
   );

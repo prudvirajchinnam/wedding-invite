@@ -195,15 +195,6 @@ export const venueSection = {
   mapsUrl: "https://maps.app.goo.gl/bNbfXChZgAjaP99z7",
 };
 
-export const rsvpSection = {
-  title: "Will you join us?",
-  subtitle: "Kindly respond soon",
-  // RSVP taps open WhatsApp with a pre-filled message addressed to this
-  // number — whoever's number this is will receive each guest's RSVP as a
-  // WhatsApp message once the guest hits "send" on their end.
-  // TODO: replace with the real number (country code + number, no + or spaces)
-  whatsappNumber: "911234567890",
-};
 
 export const footerSection = {
   blessingLine: "With the blessings of our elders and the warmth of your presence",

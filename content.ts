@@ -53,10 +53,16 @@ export const media = {
   // Gallery — shown as a slideshow. Add, remove, or reorder freely, any
   // length works. Set to an empty array [] to hide the gallery entirely.
   gallery: [
-    { src: "/images/gallery-1.jpg", alt: "" },
-    { src: "/images/gallery-2.jpg", alt: "" },
-    { src: "/images/gallery-3.jpg", alt: "" },
-    { src: "/images/gallery-4.jpg", alt: "" },
+    { src: "/images/1.jpg", alt: "" },
+    { src: "/images/2.jpg", alt: "" },
+    { src: "/images/3.jpg", alt: "" },
+    { src: "/images/4.jpg", alt: "" },
+    { src: "/images/5.jpg", alt: "" },
+    { src: "/images/6.jpg", alt: "" },
+    { src: "/images/7.jpg", alt: "" },
+    { src: "/images/8.jpg", alt: "" },
+    { src: "/images/9.jpg", alt: "" },
+    { src: "/images/10.jpg", alt: "" },
   ],
 };
 

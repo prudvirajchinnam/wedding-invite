@@ -30,7 +30,7 @@ export function Venue() {
               </span>
               <p className="mt-2 font-display text-xl italic text-plum">{venue.name}</p>
               <p className="mt-2 font-body text-sm text-plum-soft">{venue.address}</p>
-              <a
+               <a
                 href={venue.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"

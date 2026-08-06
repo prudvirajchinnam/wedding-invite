@@ -196,9 +196,20 @@ export const ceremonies: Ceremony[] = [
 
 export const venueSection = {
   title: "Where to find us",
-  name: weddingDate.venueName,
-  address: weddingDate.venueAddress,
-  mapsUrl: "https://maps.app.goo.gl/bNbfXChZgAjaP99z7",
+  venues: [
+    {
+      label: "Wedding",
+      name: weddingDate.venueName,
+      address: weddingDate.venueAddress,
+      mapsUrl: "https://maps.app.goo.gl/bNbfXChZgAjaP99z7",
+    },
+    {
+      label: "Reception",
+      name: "Rock Banquet & Convention",
+      address: "Chinthalkunta, LB Nagar, Hyderabad",
+      mapsUrl: "https://maps.app.goo.gl/pwooZX3F6qDSJBs19",
+    },
+  ],
 };
 
 

@@ -37,12 +37,12 @@ export const media = {
   // plain "A & R" monogram text instead of a photo there.
   openingPhoto: "",
 
-  bride: {
-    src: "/images/bride-placeholder.svg",
+ bride: {
+    src: "/images/Ruchitha.jpg",
     alt: `${couple.brideName}`,
   },
   groom: {
-    src: "/images/groom-placeholder.svg",
+    src: "/images/Akhil.jpg",
     alt: `${couple.groomName}`,
   },
 
@@ -53,11 +53,11 @@ export const media = {
   // Gallery — shown as a slideshow. Add, remove, or reorder freely, any
   // length works. Set to an empty array [] to hide the gallery entirely.
   gallery: [
-    { src: "/images/gallery-placeholder-1.svg", alt: "" },
-    { src: "/images/gallery-placeholder-2.svg", alt: "" },
-    { src: "/images/gallery-placeholder-3.svg", alt: "" },
-    { src: "/images/gallery-placeholder-4.svg", alt: "" },
-  ] as { src: string; alt: string }[],
+    { src: "/images/gallery-1.jpg", alt: "" },
+    { src: "/images/gallery-2.jpg", alt: "" },
+    { src: "/images/gallery-3.jpg", alt: "" },
+    { src: "/images/gallery-4.jpg", alt: "" },
+  ],
 };
 
 export const openingGate = {

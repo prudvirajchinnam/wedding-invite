@@ -22,17 +22,25 @@ export function Venue() {
         </h2>
         <FloralDivider className="mx-auto mt-5 h-5 w-28 text-sage-deep" />
 
-        <p className="mt-6 font-display text-xl italic text-plum">{venueSection.name}</p>
-        <p className="mt-2 font-body text-sm text-plum-soft">{venueSection.address}</p>
-
-        <a
-          href={venueSection.mapsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-7 inline-flex items-center gap-2 rounded-full border border-sage-deep/40 bg-white/70 px-6 py-2.5 font-body text-xs tracking-[0.15em] text-sage-deep uppercase transition-colors hover:bg-white"
-        >
-          Get directions
-        </a>
+        <div className="mt-8 space-y-10">
+          {venueSection.venues.map((venue) => (
+            <div key={venue.label}>
+              <span className="font-body text-xs tracking-[0.25em] text-sage-deep uppercase">
+                {venue.label}
+              </span>
+              <p className="mt-2 font-display text-xl italic text-plum">{venue.name}</p>
+              <p className="mt-2 font-body text-sm text-plum-soft">{venue.address}</p>
+              
+                href={venue.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-2 rounded-full border border-sage-deep/40 bg-white/70 px-6 py-2.5 font-body text-xs tracking-[0.15em] text-sage-deep uppercase transition-colors hover:bg-white"
+              >
+                Get directions
+              </a>
+            </div>
+          ))}
+        </div>
       </motion.div>
     </section>
   );
